@@ -1,12 +1,23 @@
 pipeline {
-    agent {
-        docker { image 'openjdk:17-oracle' }
+  agent {
+    docker {
+      image 'node:6-alpine'
+      args '-p 3000:3000'
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'java --version'
-            }
-        }
+  }
+  environment {
+    CI = 'true'
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
     }
+    stage('Test') {
+      steps {
+        sh './jenkins/scripts/test.sh'
+      }
+    }
+  }
 }
