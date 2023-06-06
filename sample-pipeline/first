@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'node:18.16.0-alpine' }
+        docker { image 'openjdk:17-oracle }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'java --version'
             }
         }
     }
