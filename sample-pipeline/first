@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'openjdk:17-oracle }
+        docker { image 'openjdk:17-oracle' }
     }
     stages {
         stage('Test') {
